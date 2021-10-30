@@ -28,10 +28,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private UserService userService;
 
-    @Autowired
-    @Qualifier("redisTokenStore")
-    private TokenStore tokenStore;
-
     /**
      * 使用密码模式所需要的配置
      * @param endpoints
@@ -40,8 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
-                .userDetailsService(userService)
-                .tokenStore(tokenStore);
+                .userDetailsService(userService);
     }
 
     @Override
