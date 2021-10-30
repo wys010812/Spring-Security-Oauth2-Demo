@@ -23,6 +23,7 @@ public class UserService implements UserDetailsService {
         }
         // 2. 根据用户取出数据库中密码 模拟查询
         String password = pwd.encode("123456");
+        System.out.println(password);
         // 3. 返回一个User对象 包含用户名，从数据库中取到的密码（加密过后）权限列表
         return new User(s, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
